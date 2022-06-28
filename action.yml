@@ -6,14 +6,11 @@ inputs:
     required: true
   port:
     description: "Port used by the host"
-  protocol:
-    description: "Protocol to connect with"
-    default: "ftp"
   username:
     description: "login username"
     required: true
-  password:
-    description: "login password"
+  ssh_private_key:
+    description: "The private key for authentication to connect your server"
     required: true
   ssl_verify_cert:
     description: "Should the host's x509 SSL certificate be verified"
@@ -32,6 +29,9 @@ inputs:
   remote_path:
     description: "the path to upload the files to on the remote host"
     required: true
+  max_retries:
+    description: "the maximum number of sequential tries of an operation without success"
+    default: 1
 runs:
   using: "docker"
   image: "Dockerfile"
